@@ -1,9 +1,13 @@
 # ApiTestProject
-This is a RESTful API testing project using C#, .NET Core, NUnit, Extent Report, HttpClient and Fluent Assertions to test JSONPlaceholder REST API.
+This is a RESTful API testing project using C#, .NET Core, NUnit, Extent Report, Serilog, HttpClient and Fluent Assertions to test JSONPlaceholder REST API.
 
 ## Extent Report
 Use define, manage and generate elegant html report in .NET projects.
 https://www.extentreports.com/
+
+## Serilog
+Like many other libraries for .NET, Serilog provides diagnostic logging to files, the console, and elsewhere
+https://serilog.net/
 
 ## Target framework
 .NET 6.0

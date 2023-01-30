@@ -1,7 +1,11 @@
 using ApiTestProject.Globals;
 using AventStack.ExtentReports;
+using MongoDB.Libmongocrypt;
 using Newtonsoft.Json;
 using NUnit.Framework.Interfaces;
+using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 using System;
 using System.Dynamic;
 using System.Net;
@@ -14,6 +18,7 @@ namespace ApiTestProject
         protected string? url;
         protected HttpResponseMessage? response;
         protected HttpClient client;
+        
 
         /// <summary>
         /// One time initiation events 
@@ -21,6 +26,8 @@ namespace ApiTestProject
         [OneTimeSetUp]
         public void GlobalSetup()
         {
+            Log.Logger = LogHelper.GetLogger();
+            Log.Information("Extent Report Initiate"); 
             ExtentReportTestSuiteHandler.CreateParentTest(GetType().Name);
         }
 
@@ -30,8 +37,8 @@ namespace ApiTestProject
         [OneTimeTearDown] 
         public void GlobalTearDown()
         {
+            Log.Information("Extent Report Clean up");
             ExtentReportService.Instance.Flush();
-            //ExtentReportService.BuildExtentReport().Flush();
         }
 
 
@@ -42,9 +49,15 @@ namespace ApiTestProject
         public void Setup()
         {
             ExtentReportTestSuiteHandler.CreateTest(TestContext.CurrentContext.Test.Name);
+            
             JsonConfigurationManager.BuildConfiguration();
+            Log.Information("Loaded AppEnvConfig.json file properties");
+
             var uri = new Uri(JsonConfigurationManager.ApplicationUrl);
+            Log.Information("Getting Application API url: "+ uri.ToString());
+
             client = Controller.GetClient(uri);
+            Log.Information("Fetch http client info: "+client.ToString());
         }
 
         /// <summary>
@@ -57,6 +70,7 @@ namespace ApiTestProject
             try 
             {
                 var status = TestContext.CurrentContext.Result.Outcome.Status;
+                Log.Information("Test Outcome: " + status.ToString());
                 var message = string.IsNullOrEmpty(TestContext.CurrentContext.Result.Message)?"":string.Format("<pre>{0}</pre>",TestContext.CurrentContext.Result.Message);
                 var stackTrace= string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace) ? "" : string.Format("<pre>{0}</pre>", TestContext.CurrentContext.Result.StackTrace);
                 switch(status)
@@ -82,6 +96,7 @@ namespace ApiTestProject
             }
             catch(Exception ex)
             {
+                Log.Error("Test failed to execute with an exception: " + ex.Message);
                 throw new Exception("Exception: " + ex);
             }
             finally {
