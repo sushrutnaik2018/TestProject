@@ -85,4 +85,4 @@ Microsoft Visual Studio IDE is used to develop this project.
 ### Run Tests with Command Prompt/Windows PowerShell
 * Open Folder in File Explorer: ..\UITestProject\bin\Debug\net6.0
 * Open Command Prompt/Windows PowerShell
-* Run "dotnet vstest ApiTestProject.dll"
+* Run "dotnet vstest UITestProject.dll"
