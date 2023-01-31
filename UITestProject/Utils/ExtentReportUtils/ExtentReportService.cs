@@ -20,7 +20,7 @@ namespace UITestProject
         static ExtentReportService()
         {
             string subFolder = String.Format(DateTime.Now.ToString("MM-dd-yyyy_hh-mm-ss-tt"));
-            string reportDirectory = Path.Combine(Utility.GetProjectRootDirectory(), "Report\\"+ subFolder);
+            string reportDirectory = Path.Combine(Utility.GetProjectRootDirectory(), JsonConfigurationManager.ExtentReportFolder+ subFolder);
             if (!Directory.Exists(reportDirectory))
             {
                 Directory.CreateDirectory(reportDirectory);
@@ -28,9 +28,9 @@ namespace UITestProject
             
             string path = Path.Combine(reportDirectory, "index.html");
             var htmlReporter = new ExtentHtmlReporter(path);
-            htmlReporter.Config.DocumentTitle = "API Test Project Report";
-            htmlReporter.Config.ReportName = "API Test Results";
-            htmlReporter.Config.Theme = Theme.Standard;
+            htmlReporter.Config.DocumentTitle = "UI Test Project Report";
+            htmlReporter.Config.ReportName = "UI Test Results";
+            htmlReporter.Config.Theme = Theme.Dark;
 
             Instance.AttachReporter(htmlReporter);
         }

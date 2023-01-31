@@ -26,6 +26,9 @@ namespace ApiTestProject
         [OneTimeSetUp]
         public void GlobalSetup()
         {
+            JsonConfigurationManager.BuildConfiguration();
+            Log.Information("Loaded AppEnvConfig.json file properties");
+
             Log.Logger = LogHelper.GetLogger();
             Log.Information("Extent Report Initiate"); 
             ExtentReportTestSuiteHandler.CreateParentTest(GetType().Name);
@@ -49,10 +52,7 @@ namespace ApiTestProject
         public void Setup()
         {
             ExtentReportTestSuiteHandler.CreateTest(TestContext.CurrentContext.Test.Name);
-            
-            JsonConfigurationManager.BuildConfiguration();
-            Log.Information("Loaded AppEnvConfig.json file properties");
-
+                        
             var uri = new Uri(JsonConfigurationManager.ApplicationUrl);
             Log.Information("Getting Application API url: "+ uri.ToString());
 

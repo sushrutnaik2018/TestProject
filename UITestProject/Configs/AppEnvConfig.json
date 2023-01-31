@@ -1,5 +1,9 @@
 ﻿{
   "ApplicationUrl": "http://www.agdata.com",
   "DockerUrl": "http://0.0.0.0:4444/wd/hub/",
-  "SauceLabsUrl": "http://0.0.0.0:4444/wd/hub/"
+  "SauceLabsUrl": "http://0.0.0.0:4444/wd/hub/",
+  "SeriLogFolder": "Logs\\",
+  "SeriLogFileName": "serilog.json",
+  "SeriLogLevel": "Information",
+  "ExtentReportFolder": "Report\\"
 }

@@ -28,6 +28,27 @@ namespace UITestProject
         public static string SauceLabsUrl => ConfigurationRoot[nameof(SauceLabsUrl)];
 
         /// <summary>
+        /// Get Serilog folder value
+        /// </summary>
+        public static string SeriLogFolder => ConfigurationRoot[nameof(SeriLogFolder)];
+
+        /// <summary>
+        /// Get Serilog file name
+        /// </summary>
+        public static string SeriLogFileName => ConfigurationRoot[nameof(SeriLogFileName)];
+
+        /// <summary>
+        /// Get Serilog log level
+        /// </summary>
+        public static string SeriLogLevel=> ConfigurationRoot[nameof(SeriLogLevel)];
+
+        /// <summary>
+        /// Get Extent Report Folder
+        /// </summary>
+        public static string ExtentReportFolder => ConfigurationRoot[nameof(ExtentReportFolder)];
+
+
+        /// <summary>
         /// Getter\Setter for Accessing loaded Json configuration values
         /// </summary>
         public static IConfigurationRoot ConfigurationRoot { get; private set; }

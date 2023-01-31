@@ -52,11 +52,15 @@ Microsoft Visual Studio IDE is used to develop this project.
 
 
 # UITestProject
-This is a UI testing Framework using C#, .NET Core, NUnit, Extent Report, Selenium WebDriver, Webdriver Manager using POM to test Sample application under test.
+This is a UI testing Framework using C#, .NET Core, NUnit, Extent Report,Serilog, Selenium WebDriver, Webdriver Manager using POM to test Sample application under test.
 
 ## Extent Report
 Use define, manage and generate elegant html report in .NET projects.
 https://www.extentreports.com/
+
+## Serilog
+Like many other libraries for .NET, Serilog provides diagnostic logging to files, the console, and elsewhere
+https://serilog.net/
 
 ## Target framework
 .NET 6.0
