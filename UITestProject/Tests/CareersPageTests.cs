@@ -19,7 +19,8 @@ namespace UITestProject
             Pages.Home.HoverCompanyMenu();
             Pages.Company.NavigateToCareerPage();
             Pages.Careers.NavigateToOpenPositionSection();
-            Pages.Careers.ClickSecondManagerLink();
+            Pages.OpenPositions.ValidateOpenPositionSection();
+            Pages.OpenPositions.ClickSecondManagerLink();
             
         }
     }

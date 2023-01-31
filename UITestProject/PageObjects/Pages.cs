@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UITestProject.PageObjects.OpenPositionsPage;
 
 namespace UITestProject
 {
@@ -15,12 +16,14 @@ namespace UITestProject
         public static HomePage Home;
         public static CompanyPage Company;
         public static CareersPage Careers;
+        public static OpenPositionsPage OpenPositions;
 
         public static void Init(IWebDriver driver)
         {
             Home = new HomePage(driver);
             Company = new CompanyPage(driver);
             Careers = new CareersPage(driver);
+            OpenPositions = new OpenPositionsPage(driver);
         }
     
     }

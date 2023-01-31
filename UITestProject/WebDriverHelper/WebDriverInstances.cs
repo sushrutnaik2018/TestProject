@@ -55,17 +55,21 @@ namespace UITestProject
             var options = new ChromeOptions();
             options.AddArguments(
             OptionsType.StartMaximized,
-            OptionsType.EnableAutomation,
-            //OptionsType.Headless//"--headless",
+            //OptionsType.Headless, //headless
             OptionsType.NoSandbox,
-            OptionsType.DisableInfobars,
+            //OptionsType.Incognito, //Incognito mode
             OptionsType.DisableDevShmUsage,
             OptionsType.DisableBrowserSideNavigation,
             OptionsType.DisableGpu,
-            OptionsType.IgnoreCertificateErrors);
-
+            OptionsType.IgnoreCertificateErrors,
+            @"user-data-dir=C:\Users\Dipali Naik\AppData\Local\Google\Chrome\User Data\Default");
+            
+            options.AddExcludedArguments(
+                OptionsType.EnableAutomation);
+            
+            
             new DriverManager().SetUpDriver(new ChromeConfig());
-            return new ChromeDriver("..\\DriverFiles", options, TimeSpan.FromMinutes(3));
+            return new ChromeDriver("..\\DriverFiles", options, TimeSpan.FromMinutes(5));
         }
 
         /// <summary>

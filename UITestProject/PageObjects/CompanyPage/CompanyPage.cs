@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,33 +13,34 @@ namespace UITestProject
     /// </summary>
     public class CompanyPage:BasePage
     {
-        public readonly CompanyPageMap Map;
+        public readonly CompanyPageMap Map;        
 
         public CompanyPage(IWebDriver driver) : base(driver)
         {
             // Creates a new mapping file when the page object is created
-            Map = new CompanyPageMap(driver);
+            Map = new CompanyPageMap(driver);            
         }
 
         // Test methods available to the test cases.
         // Wait for Company menu to load and then navigate to Careers page
         public void NavigateToCareerPage()
         {
-            Helper.WaitForPageToLoad(Map.CompanyMenu);
-            Map.CareerMenu.Click();            
-        }
+            Helper.WaitForPageToLoad(Map.CompanyTab);
+
+            Helper.SelectMenuOption(Map.CompanyMenu, Map.CareerMenu);            
+        }       
 
         // Wait for Company menu to load and then navigate to Overview page
         public void NavigateToOverviewPage()
         {
-            Helper.WaitForPageToLoad(Map.CompanyMenu);
+            Helper.WaitForPageToLoad(Map.CompanyTab);
             Map.OverviewMenu.Click();
         }
 
         // Wait for Company menu to load and then navigate to Leadership page
         public void NavigateToLeadershipPage()
         {
-            Helper.WaitForPageToLoad(Map.CompanyMenu);
+            Helper.WaitForPageToLoad(Map.CompanyTab);
             Map.LeadershipMenu.Click();
         }
     }

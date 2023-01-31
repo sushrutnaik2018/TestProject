@@ -33,31 +33,8 @@ namespace UITestProject
         // Navigate to Open Positions Section
         public void NavigateToOpenPositionSection()
         {
+            Helper.WaitForPageToLoad(Map.JoinTheTeamHeader, 10);
             Map.ViewOpenPositions.Click();
-            Helper.WaitForTextToBePresent(Map.KeywordToSearch, "Keywords to search", 10);
         }
-
-        // Retrieve all Jobs list and iterate to second manager job and click on it
-        public void ClickSecondManagerLink()
-        {
-            int managerCount = 0;
-            IList<IWebElement> list = Map.AllJobsList;
-            foreach (IWebElement element in list)
-            {
-                var findManager = element.FindElement(By.ClassName("job"));
-                if (findManager.Text.Contains("Manager"))
-                {
-                    managerCount++;                        
-                }
-                if (managerCount > 1)
-                {
-                    findManager.Click();
-                    Helper.WaitForTextToBePresent(Map.ManagerPosition, "Technical Engagement Manager");
-                    break;
-                }
-            }
-            
-        }
-
     }
 }

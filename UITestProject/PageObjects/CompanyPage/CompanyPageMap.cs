@@ -17,9 +17,10 @@ namespace UITestProject
         }
 
         //Page elements used for synchronisation
-        public By CompanyMenu => By.ClassName("(//ul[@class='sub-menu'])[3]");        
+        public By CompanyTab => By.XPath("//li[@id='menu-item-992']/a[1]");
 
         //Page elements for interaction
+        public IWebElement CompanyMenu => Helper.LocateElement(Locators.Xpath, "//li[@id='menu-item-992']/a[1]");
         public IWebElement OverviewMenu => Helper.LocateElement(Locators.Xpath, "//li[@id='menu-item-829']/a[1]");
         public IWebElement LeadershipMenu => Helper.LocateElement(Locators.Xpath, "//li[@id='menu-item-271']/a[1]");
         public IWebElement CareerMenu => Helper.LocateElement(Locators.Xpath, "//li[@id='menu-item-269']/a[1]");
